@@ -42,6 +42,9 @@ public class RegressionTree {
 		root = new node();
 	}
 	
+	public Double Predict(tuple datapoint) {
+		return Predict(datapoint, root);
+	}
 	public Double Predict(tuple datapoint, node rootnode) {
 		if (rootnode.is_leaf == true) {
 			return rootnode.predict_value;
@@ -52,6 +55,9 @@ public class RegressionTree {
 		} else {
 			return Predict(datapoint, rootnode.left);
 		}
+	}
+	public void FitData(ArrayList<tuple> sample, int sample_num) {
+		 FitData(sample, sample_num,0,root);
 	}
 	
 	public void FitData(ArrayList<Data.tuple> sample, int sample_num, int dep, node rootnode){
@@ -79,7 +85,11 @@ public class RegressionTree {
 	
 	public boolean FindandSplit(ArrayList<Data.tuple> sample, int sample_num, node rootnode) {
 		Double purtyDouble = 0.0;
-		ArrayList<tuple> useful_sample = (ArrayList<Data.tuple>)sample.subList(0, sample_num);
+		ArrayList<tuple> useful_sample = new ArrayList<Data.tuple>();
+		for(int i = 0 ; i < sample_num ; ++i) {
+			useful_sample.add(sample.get(i));
+		}
+		
 		int n = configure.featurenum;
 		List<Integer> fv = new ArrayList<Integer>();
 		for(int i =0; i<n ; ++i) {

@@ -26,7 +26,7 @@ public class configure {
 		data_sample_ratio = 1.0;
 		feature_sample_ratio = 1.0 ;
 		min_leaf_size = 0;
-		lossType = loss_type.LOG_LIKELY;
+		lossType = loss_type.SQUARED_ERROR;
 		
 	}
 

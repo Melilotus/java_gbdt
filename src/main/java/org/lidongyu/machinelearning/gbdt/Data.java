@@ -66,7 +66,7 @@ public class Data {
 	}
 	
 	
-	public static List<tuple> DataVec;
+	public  ArrayList<tuple> DataVec;
 	
 	public Data() {
 		DataVec = new ArrayList<Data.tuple>();
@@ -75,6 +75,10 @@ public class Data {
 	public void CleanDataVec() {
 		DataVec.clear();
 		
+	}
+	
+	public ArrayList<tuple> getData() {
+		return DataVec;
 	}
 	
 	public boolean LoadFromFile(String Filename) {
